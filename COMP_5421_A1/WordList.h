@@ -10,6 +10,7 @@
 
 //#include <iostream>
 #include "WordData.h"
+#include <fstream>
 #include <string>
 //using namespace std;
 
@@ -24,9 +25,10 @@ private:
 	std::string sourceFile;
 	int size;
 
-	void load();
+	void load( std::fstream & );
+	void insert(std::string, int);
 	WordData* search( std::string );
-	void insert( std::string );
+	
 
 	struct WordNode
 	{

@@ -51,20 +51,37 @@ int WordData::compare( std::string compString )
 
 	while(word[i]!=0 && comparable[i]!=0)
 	{
-		if(word[i] - comparable[i]<0)
-			return -1;
-		if(word[i] - comparable[i]>0)
+		char source = tolower(word[i]);
+		char input = tolower(comparable[i]);
+
+		if (source - input < 0)
+		{
+			cout << "1" << endl;
 			return 1;
+		}
+		if (source - input > 0)
+		{
+			cout << "-1 here" << endl;
+			return -1;
+		}
 		i++;
 	}
 
-	if(word[i]==0 && comparable[i]==0)
+	if (word[i] == 0 && comparable[i] == 0)
+	{
+		cout << "0" << endl; 
 		return 0;
-	else if(word[i]==0)
-		return -1;
-	else if(comparable[i]==0)
+	}
+	else if (word[i] == 0)
+	{
+		cout << "1" << endl;
 		return 1;
-
+	}
+	else if (comparable[i] == 0)
+	{
+		cout << "-1" << endl;
+ 		return -1;
+	}
 	return 999;
 }
 
@@ -83,11 +100,11 @@ void WordData::print( ostream& stream )
 	}
 
 	while (spacing > 0){
-		cout << " ";
+		stream << " ";
 		spacing--;
 	}
 
-	cout << word;
+	stream << word;
 
 	stream << " (" << frequency << ") ";
 
