@@ -22,8 +22,8 @@ public:
 	~WordData();
 	void addLineNumber( int );
 	int getFrequency();
-	//read only pointer to stored word
-	//read only reference to the intlist
+	const char* getWord();
+	const IntList* getLineList();
 	int compare( std::string );
 	void print( std::ostream & );
 

@@ -56,13 +56,7 @@ void IntList::append(const int element)
 	bool found = false;
 	int i = 0;
 
-	while (i < size)
-	{
-		if (lineNumbers[i] == element)
-			found = true;
-
-		i++;
-	}
+	found = contains(element);
 
 	if (!found){
 		if (size == capacity)
@@ -100,11 +94,8 @@ void IntList::printArray( ostream& stream )
 		stream << "data at location " << i <<  " is : " << lineNumbers[i] << endl;
 }
 
-const int* IntList::getReadOnlyPointer()
+const int* IntList::getArray()
 {
-
-	//TODO Make read-only
-
 	return lineNumbers;
 }
 
@@ -118,7 +109,7 @@ void IntList::doubleCapacity()
 	for(int i=0; i<size; i++)
 		temp[i] = *(lineNumbers + i);
 
-	lineNumbers = new int[capacity];
+	delete lineNumbers;
 	lineNumbers = temp;
 
 }

@@ -30,6 +30,8 @@ WordList::WordList( std::string fileName )
 
 void WordList::print( ostream &stream)
 {
+	char previousLetter = ' ';
+	char letter = '`';
 	stream << "Word CollectionSource File: " << sourceFile << endl;
 	stream << "============================" << endl;
 
@@ -37,12 +39,27 @@ void WordList::print( ostream &stream)
 
 	while(current!=NULL)
 	{
-		current->data.print(stream);
+		
+		
+		const char *word = current->data.getWord();
+		previousLetter = tolower(word[0]);
 
-		stream << endl;
+		while (letter != previousLetter)
+		{
+			letter++;
+			stream << "<" << (char)toupper(letter) << ">" << endl;
+		}
+
+		current->data.print(stream);
 
 		current = current->nextNode;
 
+	}
+
+	while (letter < 'z')
+	{
+		letter++;
+		stream << "<" << (char)toupper(letter) << ">" << endl;
 	}
 
 }

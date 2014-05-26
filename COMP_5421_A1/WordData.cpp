@@ -36,6 +36,16 @@ void WordData::addLineNumber( int line )
 	list.append(line);
 }
 
+const char* WordData::getWord()
+{
+	return word;
+}
+
+const IntList* WordData::getLineList()
+{
+	return &list;
+}
+
 int WordData::getFrequency()
 {
 	return frequency;
@@ -108,14 +118,11 @@ void WordData::print( ostream& stream )
 
 	stream << " (" << frequency << ") ";
 
-	const int *lines = list.getReadOnlyPointer();
+	const int *lines = list.getArray();
 
 
 	for (int i = 0; i < list.getSize(); i++)
 		stream << lines[i] << " " ;
 
 	stream << endl;
-
-
-
 }

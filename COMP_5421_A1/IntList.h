@@ -23,7 +23,7 @@ public:
 	int getSize();
 	int getCapacity();
 	void printArray( std::ostream & );
-	const int* getReadOnlyPointer();
+	const int* getArray();
 private:
 
 	int *lineNumbers;
